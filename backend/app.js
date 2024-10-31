@@ -22,7 +22,13 @@ const io = new Server(server, {
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 app.use(cors());
-app.use(express.static('public'));
+app.use(express.static('public', {
+  setHeaders: (res, path) => {
+      if (path.endsWith('.css')) {
+          res.setHeader('Content-Type', 'text/css');
+      }
+  }
+}));
 
 // Basic route for testing
 app.get('/', (req, res) => {
