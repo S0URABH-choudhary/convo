@@ -9,6 +9,7 @@ const mymembers = document.getElementById("members")
 
 const name = prompt("enter your name");
 socket.emit("new-user-joined", name);
+socket.emit("user-disconnect" , name);
 
 // to add all members in side pannel
 addmembers = (name) =>{
@@ -32,6 +33,12 @@ socket.on('user-joined', name =>{
     appand(`${name}: have joined the chat`, 'left')
     addmembers(name);
 }) 
+// to announce who left 
+socket.on('user-left', name =>{
+    appand(`${name}: have left the chat`, 'left')
+    // addmembers(name);
+}) 
+
 
 // sending and receving messages
 socket.on("message-received", data =>{
