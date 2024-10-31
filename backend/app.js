@@ -22,7 +22,7 @@ const io = new Server(server, {
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 app.use(cors());
-app.use(express.static("frontend"));
+app.use(express.static("../frontend"))
 
 // Basic route for testing
 app.get('/', (req, res) => {
