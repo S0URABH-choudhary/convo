@@ -3,6 +3,8 @@ import http from 'http';
 import { Server } from 'socket.io';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import { fileURLToPath } from "node:url";
+import { dirname , join } from "node:path";
 import path from 'path';
 
 dotenv.config();
@@ -17,13 +19,14 @@ const io = new Server(server, {
     methods: ["GET", "POST"]
   }
 });
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 app.use(cors());
 app.use(express.static('public'));
 
 // Basic route for testing
 app.get('/', (req, res) => {
-  res.send('Hello from Express and Socket.IO!');
+  res.sendFile(join(__dirname, '../frontend/index.html'))
 });
 
 io.on('connection', (socket) => {
