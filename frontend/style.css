@@ -1,0 +1,134 @@
+@font-face {
+    font-family: opensans;
+    src: url(../assets/OpenSans-Regular.ttf);
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: opensans;
+}
+html,body{
+    height: 100%;
+    width: 100%;
+}
+
+.main{
+    position: fixed;
+    display: grid;
+    grid-template-columns: 20rem 1fr ;
+    height: 100vh;
+    width: 100vw;
+    background: #E5D9F2;
+}
+
+.option-section{
+    position: relative;
+    max-height: 100vh;
+    border-right: 3px solid #fff;
+    background-color: #A594F9;
+    overflow: hidden;
+}
+
+.logo{
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    align-items: center;
+    padding-inline: 20px;
+    height: 10%;
+    width: 100%;
+    background: #0F67B1;
+
+}
+.logo img{
+    height: 50px;
+    width: 50px;
+}
+
+#members{
+    width: 100%;
+    height: 90%;
+    line-height: 30px;
+    padding-inline: 20px;
+    padding-top: 20px;
+    overflow-y: auto;
+}
+
+.membername{
+    color: white;
+    font-size: 20px;
+}
+
+.chat-section{
+    padding: 0 20px;
+    max-height: 75vh;
+    background-color: #E5D9F2;
+    margin-top: 8%;
+    overflow-y: auto;
+    scrollbar-width: 0;
+}
+
+.chat-header {
+    position: fixed;
+    background-color: #0F67B1;
+    top: 0;
+    right: 0;
+    height: 10%;
+    width: calc(100% - 20rem);
+}
+
+.my-name{
+    padding-inline: 20px;
+    padding-block: 15px;
+    color: white;
+    font-size: 25px;
+}
+
+.left,.right{
+    padding: 10px 10px;
+    height: max-content;
+    width: max-content;
+    background: #fff;
+    margin-bottom: 20px;
+    border-radius: 50px;
+}
+
+.right{
+    float: right;
+    clear: both;
+}
+
+.left{
+    float: left;
+    clear: both;
+}
+
+form{
+    display: flex;
+    width: 100%;
+    position: fixed;
+    top: 90%;
+    gap: 15px;
+}
+
+form button i{
+    font-size: 20px;
+    font-weight: 400;
+}
+
+form button{
+    border: none;
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    background: #A594F9;
+}
+
+form input{
+    outline: none;  
+    height: 50px;
+    width: 72%;
+    padding-inline: 15px;
+    border-radius: 50px;
+    border: none;
+}
