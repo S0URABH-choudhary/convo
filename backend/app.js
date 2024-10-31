@@ -28,6 +28,7 @@ app.use(express.static("../frontend"))
 app.get('/', (req, res) => {
   res.sendFile(join(__dirname, '../frontend/index.html'))
 });
+const users = []
 
 io.on('connection', (socket) => {
   console.log('a user connected');
