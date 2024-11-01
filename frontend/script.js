@@ -68,3 +68,25 @@ sendmessage = () => {
     socket.emit("message-send", message)
     appand(`you : ${message}`, 'right')
 }
+
+// side bar for total members
+
+let openham = document.getElementById("open-ham")
+let closeham = document.getElementById("close-ham")
+let option = document.getElementById("option")
+console.log(option)
+
+
+closeham.addEventListener("click",function(){
+    option.style.setProperty("width","0px")
+    option.style.setProperty("border-left","0px")
+    closeham.style.setProperty("display","none")
+    openham.style.setProperty("display","block")
+})
+openham.addEventListener("click",function(){
+    option.style.setProperty("width","auto")
+    option.style.setProperty("border-left","3px solid #fff")
+    closeham.style.setProperty("display","block")
+    openham.style.setProperty("display","none")
+})
+
