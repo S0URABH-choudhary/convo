@@ -54,7 +54,7 @@ html,body{
     
 }
 #open-ham{
-    margin-top: 10px;
+    margin-top: 15px;
     font-size: 30px;
 }
 #close-ham{
@@ -174,14 +174,16 @@ form input{
         display: none;
     }
     .chat-section {
-        margin-top: 70px;
+        margin-top: 80px;
         width: 100%;
         max-height: 82vh;
     }
 
     .chat-header {
+        height: 60px;
         left: 0;
         width: 100%;
+        z-index: -9;
     }
 }
 
