@@ -74,7 +74,6 @@ sendmessage = () => {
 let openham = document.getElementById("open-ham")
 let closeham = document.getElementById("close-ham")
 let option = document.getElementById("option")
-console.log(option)
 
 
 closeham.addEventListener("click",function(){
