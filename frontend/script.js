@@ -1,43 +1,40 @@
-const socket = io('https://convo-1-wsrt.onrender.com');
+const socket = io("https://convo-1-wsrt.onrender.com");
 
 
 const  form = document.getElementById("message-container");
 const messagebox = document.getElementById("chat")
 const  messageInput = document.getElementById("message-input");
-const myname = document.getElementById("chat-header")
+const myname = document.getElementById("your-name")
 const mymembers = document.getElementById("members")
 
-const name = prompt("enter your name");
-socket.emit("new-user-joined", name);
-socket.emit("user-disconnect" , name);
+// const name = prompt("enter your name");
+// socket.emit("new-user-joined", name);  old code
 
-// to add all members in side pannel
-addmembers = (name) =>{
-    const memberelement = document.createElement("div");
-    memberelement.innerText = name;
-    memberelement.classList.add("membername")
-    mymembers.append(memberelement);
-}
+socket.on('connect',() => {
+    const username = prompt('enter your name:');
+    socket.emit('new-user-joined', username)
+})
 
-// to display user name on top of the tab
-addname = (name) => {
-    const nameelement = document.createElement("h1");
-    nameelement.innerText = name;
-    nameelement.classList.add("my-name");
-    myname.append(nameelement);
-}
-addname(name)
+
 
 // to announce who joined 
-socket.on('user-joined', name =>{
-    appand(`${name}: have joined the chat`, 'left')
-    addmembers(name);
-}) 
-// to announce who left 
-socket.on('user-left', name =>{
-    appand(`${name}: have left the chat`, 'left')
-    // addmembers(name);
-}) 
+socket.on('user-list', (users) =>{
+    
+    for (let id in users){
+        displayuserlist(users, socket.id);
+        if(id === socket.id ){
+            addname(users[id]);
+        }else{
+            appand(`${users[id]} :have joined the chat`, 'left')
+        }
+    }
+});
+
+// to announce who left
+
+socket.on('user-left',(user) => {
+    appand(`${user} :have left the chat`, 'left')
+})
 
 
 // sending and receving messages
@@ -50,6 +47,11 @@ form.addEventListener("submit", function(e) {
     e.preventDefault()
 })
 
+// to display user name on top of the tab
+addname = (name) => {
+    myname.innerText = name;
+    myname.classList.add("my-name");
+}
 
 
 
@@ -58,6 +60,20 @@ appand = (message , position) => {
     messageelement.innerText = message;
     messageelement.classList.add(position);
     messagebox.append(messageelement);
+    
+}
+
+// to add all members in side pannel
+displayuserlist = (users , id ) =>{
+    let userlisthtml = '';
+    for (let i in users){
+        if (i === id){
+            userlisthtml += `<li>${users[i]}(you)</li>`;
+        }else{
+            userlisthtml += `<li>${users[i]}</li>`;
+        }
+    }
+    document.getElementById("list").innerHTML = userlisthtml;
 
 }
 
