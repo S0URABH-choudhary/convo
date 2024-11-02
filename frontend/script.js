@@ -1,4 +1,4 @@
-const socket = io("https://convo-1-wsrt.onrender.com");
+const socket = io("https://convo-1-wsrt.onrender.com/");
 
 
 const  form = document.getElementById("message-container");
@@ -104,4 +104,9 @@ openham.addEventListener("click",function(){
     closeham.style.setProperty("display","block")
     openham.style.setProperty("display","none")
 })
+// preloader
+let loader = document.getElementById("loader")
 
+function preloader () {
+    loader.style.display = "none";
+}
