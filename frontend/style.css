@@ -70,6 +70,12 @@ html,body{
     overflow-y: auto;
 }
 
+#list{
+    color: white;
+    font-size: 20px;
+    line-height: 40px;
+}
+
 .membername{
     color: white;
     font-size: 20px;
