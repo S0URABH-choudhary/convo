@@ -4,7 +4,6 @@ import { Server } from 'socket.io';
 import dotenv from 'dotenv';
 import { fileURLToPath } from "node:url";
 import { dirname , join } from "node:path";
-import path from 'path';
 
 dotenv.config();
 const app = express();

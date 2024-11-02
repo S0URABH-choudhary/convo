@@ -106,7 +106,3 @@ openham.addEventListener("click",function(){
 })
 // preloader
 let loader = document.getElementById("loader")
-
-function preloader () {
-    loader.style.display = "none"
-}
