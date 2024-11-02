@@ -1,4 +1,4 @@
-const socket = io("https://convo-1-wsrt.onrender.com/");
+const socket = io();
 
 
 const  form = document.getElementById("message-container");
@@ -10,10 +10,16 @@ const mymembers = document.getElementById("members")
 // const name = prompt("enter your name");
 // socket.emit("new-user-joined", name);  old code
 
-socket.on('connect',() => {
-    const username = prompt('enter your name:');
-    socket.emit('new-user-joined', username)
-})
+socket.on('connect', () => {
+    let username = prompt('Enter your name:');
+    if (username && username.trim()) {
+        socket.emit('new-user-joined', username);
+    } else {
+        // Handle case where username is invalid (e.g., user cancels the prompt)
+        alert("A valid username is required to join the chat.");
+        socket.disconnect(); // Optionally disconnect if no valid name is provided
+    }
+});
 
 
 
@@ -104,5 +110,3 @@ openham.addEventListener("click",function(){
     closeham.style.setProperty("display","block")
     openham.style.setProperty("display","none")
 })
-// preloader
-let loader = document.getElementById("loader")

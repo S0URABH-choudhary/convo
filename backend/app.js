@@ -26,10 +26,13 @@ io.on('connection', (socket) => {
   console.log('a user connected:', socket.id);
   // handle connection
   socket.on("new-user-joined", (name) => {
-    users[socket.id] = name;
-    console.log(users)
-    io.emit('user-list', users);
-  })
+    if (name && name.trim()) {  // Ensure name is not null or empty
+        users[socket.id] = name;
+        io.emit('user-list', users);
+    } else {
+        console.log("Invalid user name received. Ignoring the join request.");
+    }
+});
 
   socket.on('disconnect',() => {
     if (users[socket.id]){
