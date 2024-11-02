@@ -1,4 +1,4 @@
-const socket = io();
+const socket = io("https://convo-1-wsrt.onrender.com/");
 
 
 const  form = document.getElementById("message-container");
@@ -85,10 +85,14 @@ displayuserlist = (users , id ) =>{
 
 sendmessage = () => {
     message = messageInput.value;
-    console.log(message)
-    messageInput.value = '';
-    socket.emit("message-send", message)
-    appand(`you : ${message}`, 'right')
+    if(message && message.trim()){
+        socket.emit("message-send", message)
+        appand(`you : ${message}`, 'right')
+        messageInput.value = '';
+    }else{
+        return false;
+    }
+    
 }
 
 // side bar for total members
